@@ -1,0 +1,73 @@
+<div class = "container">
+  <div class = "jumbotron text-center">
+    <h2><p id="notice"><%= notice %></p></h2>
+    <h1>Welcome <%= @student.name %>!</h1>
+    <h3>Studying under <%= @teacher.name %></h3>
+  </div>
+</div>
+
+<div class = "container text-center">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= link_to(new_student_log_path(@student), :class => "btn btn-success btn-lg active btn-block voffset3") do %>
+        <h2>Add A New Log!</h2>
+      <% end %>
+    </div>
+    <div class = "col-sm-12">
+      <h2>Now Showing <%= pluralize(@student.logs.count, "Practice Log") %></h2>
+    </div>
+  </div>
+  
+  <div class = "row">
+    <% @logs.each do |log| %>
+      <div class = "col-md-4">
+      
+        <%= link_to(student_log_path(@student, log), :class => "btn btn-default btn-lg active btn-block voffset3") do %>
+          <h2><%= log.created_at.strftime("%B %d, %Y") %></h2>
+          
+          <h3>"<%= log.comment.truncate(30, separator: ' ', omission: '...') %>"</h3>
+        <% end %>
+      
+      </div>
+    <% end %>
+  </div>
+  
+  <div class = "row">
+    <div class = "col-sm-4">
+      <%= link_to(teacher_path(@teacher), :class => "btn btn-success btn-lg active btn-block voffset3") do %>
+        Back to <%= @teacher.name %>
+      <% end %>
+    </div>
+    <div class = "col-sm-4">
+      <%= link_to('Edit Student', edit_teacher_student_path(@teacher, @student), :class => "btn btn-warning btn-lg active btn-block voffset3") %>
+    </div>
+    <div class = "col-sm-4">
+      <%= link_to('Back to Teacher List', teachers_path, :class => "btn btn-primary btn-lg active btn-block voffset3") %>
+    </div>
+    
+
+<!--<p>-->
+<!--  <strong>Name:</strong>-->
+<!--  <%= @student.name %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Teacher:</strong>-->
+<!--  <%= link_to(@teacher.name, @teacher) %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong><%= link_to("Add A New Log", new_student_log_path(@student)) %></strong>-->
+<!--<p>-->
+<!--  <strong>Previous Logs</strong>-->
+<!--  <ul>-->
+<!--  <% @logs.each do |log| %>-->
+<!--    <li>-->
+<!--    <%= link_to(log.created_at, student_log_path(@student, log)) %>-->
+<!--    </li>-->
+<!--  <% end %>-->
+<!--  </ul>-->
+<!--</p>-->
+
+<!--<%= link_to 'Edit', edit_teacher_student_path(@teacher, @student) %> |-->
+<!--<%= link_to 'Back', teacher_path(@teacher) %>-->

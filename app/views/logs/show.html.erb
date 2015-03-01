@@ -1,0 +1,50 @@
+<div class = "container">
+  <div class = "jumbotron text-center">
+  
+    <h2><p id="notice"><%= notice %></p></h2>
+    <h1>Practice Log Entry for <%= @student.name %></h1>
+    <h3>Created <%= @log.created_at.strftime("%B %d, %Y") %> by <%= @teacher.name %></h3>
+    
+  </div>
+</div>
+
+<div class = "container text-center center-block">
+
+  <div class = "panel panel-default">
+    <div class = "panel-body">
+      <%= @log.comment %>
+    </div>
+  </div>
+  
+  <div class = "row">
+    <div class = "col-sm-4">
+      <%= link_to(teacher_student_path(@teacher, @student), :class => "btn btn-success btn-lg active btn-block voffset3") do %>
+        Back to <%= @student.name %>
+      <% end %>
+    </div>
+    <div class = "col-sm-4">
+      <%= link_to('Edit Log', edit_student_log_path(@student, @log), :class => "btn btn-warning btn-lg active btn-block voffset3") %>
+    </div>
+    <div class = "col-sm-4">
+      <%= button_to('Delete Log', student_log_path(@student, @log), method: "delete", data: { confirm: "Are you sure?" }, :class => "btn btn-danger btn-lg active btn-block voffset3") %>
+    </div>
+</div>
+
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @teacher.name %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @log.comment %>
+</p>
+
+<%= link_to 'Edit', edit_student_log_path(@student, @log), :class => "btn btn-primary" %></div> |
+<%= link_to 'Back', teacher_student_path(@student.teacher_id, @student), :class => "btn btn-primary" %>
