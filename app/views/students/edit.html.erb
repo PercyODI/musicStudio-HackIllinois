@@ -4,8 +4,11 @@
 
 <%= render 'form' %>
 
-<div class="col-sm-offset-6 col-sm-2">
+<div class="col-sm-offset-1 col-sm-3">
       <%= link_to('Cancel', teacher_student_path(@teacher, @student), :class => "btn btn-warning btn-block voffset2") %>
+</div>
+<div class="col-sm-3">
+    <%= button_to('Delete Student', teacher_student_path(@teacher, @student), method: "delete", data: { confirm: "Are you sure?" }, :class => "btn btn-danger btn-block voffset2") %>
 </div>
 
 <!--<%= link_to 'Show', teacher_student_path(@teacher, @student) %> |-->

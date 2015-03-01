@@ -1,10 +1,13 @@
 <div class = "container text-center">
-    <h1>Editing teacher</h1>
+    <h1>Editing Teacher</h1>
 </div>
     
 <%= render 'form' %>
 
-<div class="col-sm-offset-6 col-sm-2">
-      <%= link_to('Cancel', teacher_path(@teacher), :class => "btn btn-warning btn-block") %>
+<div class="col-sm-offset-2 col-sm-3">
+      <%= link_to('Cancel', teacher_path(@teacher), :class => "btn btn-warning btn-block voffset2") %>
+</div>
+<div class="col-sm-3">
+    <%= button_to('Delete Teacher', teacher_path(@teacher), method: "delete", data: { confirm: "Are you sure?" }, :class => "btn btn-danger btn-block voffset2") %>
 </div>
     
