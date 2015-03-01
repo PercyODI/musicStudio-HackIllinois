@@ -30,21 +30,3 @@
     </div>
 </div>
 
-
-<p>
-  <strong>Teacher:</strong>
-  <%= @teacher.name %>
-</p>
-
-<p>
-  <strong>Student:</strong>
-  <%= @student.name %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @log.comment %>
-</p>
-
-<%= link_to 'Edit', edit_student_log_path(@student, @log), :class => "btn btn-primary" %></div> |
-<%= link_to 'Back', teacher_student_path(@student.teacher_id, @student), :class => "btn btn-primary" %>
